@@ -1,0 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+*::-webkit-scrollbar {
+    display: none;
+}
+.token.selector,.token.property,.token.function {
+    color: black;
+}
+#preId{
+    width:40%;
+    margin:auto;
+    background:#ccc;
+}
