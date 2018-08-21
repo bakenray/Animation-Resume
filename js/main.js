@@ -90,6 +90,7 @@ var md =
  希望应聘前端开发岗位
 
 
+
  # 技能介绍
  - HTML 
  - CSS 
@@ -135,14 +136,19 @@ var cssCode3 =
     line-height: 1em;
     text-indent: 6px;
 }
+#tempId h1:nth-child(2){
+    margin-top: 20px;
+}
 /*设置文字内容样式*/
 #tempId p{
     text-indent:.8em;
+    margin: -6px auto;
 }
 #tempId ul li,
 #tempId ol li
 {
     text-indent:.8em;
+    margin: -6px auto;
 }
 
 `
