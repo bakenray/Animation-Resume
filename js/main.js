@@ -1,4 +1,3 @@
-             
 var cssCode = 
 `
 /*
@@ -15,7 +14,7 @@ body{
 }
 /* pre标签 添加样式 */
 #preId{
-    background:rgba(0,0,0,.1);
+    background: rgba(255,255,255,.4);
     padding:20px;
     font-size:20px;
 }
@@ -49,7 +48,7 @@ var cssCode2 =
     bottom:4%;
     width:44%;
     height:92%;
-    border:1px solid #56807e;
+    border:1px solid #e1e1e1;
     border-radius:4px;
     overflow:auto;  
     box-shadow: 0 10px 15px rgba(0,0,0,.15);
@@ -64,18 +63,29 @@ var cssCode2 =
     background:#fff;
     border:1px solid #ccc;
     border-radius:4px;
-    overflow:hidden;
     box-shadow: 0 10px 15px rgba(0,0,0,.15);
+    font-size:20px;
+    padding:16px;
 }
 #content{
     width:100%;
-    height:100%;
+    height:100%; 
+    overflow: auto;
 }
 `
-
+var cssCode3 =
+`
+/*设置样式*/
+#tempId{    
+    width:100%;
+    height:100%; 
+    overflow: auto;
+}
+`
 var md =
 `
- #自我介绍
+ # 自我介绍
+
  我叫XXX
  1993年3月
 
@@ -83,43 +93,50 @@ var md =
  自学前端两年
  希望应聘前端开发岗位
 
- #节能介绍
- 熟悉 JavaScript CSS 
+ # 技能介绍
+ - HTML 
+ - CSS 
+ - JavaScript
+ - jQuery
+ - Vue.js
+ - Node.js
 
- #项目介绍
- 1 . XXX
- 2 . XXX
- 3 . XXX
- 4 . XXX
- 
- #联系方式
+
+ # 项目介绍
+
+ 1. XXX
+ 2. XXX
+ 3. XXX
+ 4. XXX
+
+ # 联系方式
+
  电话：xxxx
  Q Q：xxxx
  邮箱：xxxx
 `
+
 writeCode('', cssCode, ()=>{
     createPaper(()=>{
         writeCode(cssCode,cssCode2,()=>{
             writeMarkdown(md,()=>{
-                
+                markdownToHtml(md,()=>{
+                    writeCode(cssCode+cssCode2,cssCode3,()=>{
+                        console.log('完成！')
+                    })
+                })
             })
         })
     })
 })
 
-function writeMarkdown(markdowns,fn){
+function markdownToHtml(markdown,fn){
+    let temp = document.createElement('pre')
+    temp.id = 'tempId'
+    temp.innerHTML = marked(markdown)
     let paperContent = document.querySelector('#content')
-    console.log(paperContent)
-    let n = 0
-    let timingID = setInterval(()=>{
-        n += 1
-        paperContent.innerHTML = markdowns.substring(0,n)
-        paperContent.scrollTop = paperContent.scrollHeight
-        if(n>=markdowns.length){
-            window.clearInterval(timingID) 
-            fn && fn.call()
-        }
-    },0)
+    paperContent.replaceWith(temp)
+    fn && fn.call()
 }
 
 function writeCode(prefix,code,fn){
@@ -145,4 +162,18 @@ function createPaper(fn){
     paper.appendChild(content)
     document.body.insertBefore(paper,document.body.childNodes[2])
     fn && fn.call()
+}
+
+function writeMarkdown(markdowns,fn){
+    let paperContent = document.querySelector('#content')
+    let n = 0
+    let timingID = setInterval(()=>{
+        n += 1
+        paperContent.innerHTML = markdowns.substring(0,n)
+        paperContent.scrollTop = paperContent.scrollHeight
+        if(n>=markdowns.length){
+            window.clearInterval(timingID) 
+            fn && fn.call()
+        }
+    },0)
 }
