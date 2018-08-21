@@ -15,7 +15,7 @@ body{
 #preId{
     background: rgba(255,255,255,.4);
     padding:20px;
-    font-size:20px;
+    font-size:20px; 
 }
 /* 所有标签添加一个过渡效果 */
 *{
@@ -35,42 +35,44 @@ body{
 /*加点3D效果*/
 #preId{
     transform:rotate(360deg);
+    transform: scale(.8, .8);  
 }
-/*下面正式介绍一下我自己吧*/
 `
 var cssCode2 = 
-`
+`/*下面正式介绍一下我自己吧*/
 #preId{
     position:fixed;
-    left:5%;
+    left:2%;
     top:4%;
     bottom:4%;
     width:44%;
     height:92%;
     border:1px solid #e1e1e1;
     border-radius:4px;
-    overflow:auto;  
     box-shadow: 0 10px 15px rgba(0,0,0,.15);
 }
+/*首先创建一张白纸*/
 #paperId{
     position:fixed;
-    right:5%;
+    right:7%;
     width:44%;
     top:4%;
     bottom:4%;
     height:92%;
-    background:#fff;
+    background: rgba(255,255,255,.96);
     border:1px solid #ccc;
     border-radius:4px;
     box-shadow: 0 10px 15px rgba(0,0,0,.15);
     font-size:16px;
     padding:20px;
+    overflow: auto;
 }
 #content{
     width:100%;
     height:100%; 
     overflow: auto;
 }
+/*向白纸中填入内容*/
 `
 
 var md =
@@ -87,7 +89,7 @@ var md =
 
  希望应聘前端开发岗位
 
- 
+
  # 技能介绍
  - HTML 
  - CSS 
@@ -116,13 +118,14 @@ var md =
 `
 var cssCode3 =
 `
-/*设置样式*/
+/*设置白纸的样式*/
 #tempId{    
     width:100%;
     height:100%; 
     overflow: auto;
     font-size: 16px;
     padding:20px;
+    color: #5b6968;
 }
 /*设置标题文字样式*/
 #tempId h1{
@@ -134,7 +137,6 @@ var cssCode3 =
 }
 /*设置文字内容样式*/
 #tempId p{
-    color: #5b6968;
     text-indent:.8em;
 }
 #tempId ul li,
@@ -144,7 +146,6 @@ var cssCode3 =
 }
 
 `
-
 
 writeCode('', cssCode, ()=>{
     createPaper(()=>{
@@ -181,9 +182,8 @@ function writeCode(prefix,code,fn){
             window.clearInterval(timingID) 
             fn && fn.call()
         }
-    },0)
+    },20)
 }
-
 function createPaper(fn){
     var paper = document.createElement('div')
     var content =  document.createElement('pre')
@@ -205,5 +205,5 @@ function writeMarkdown(markdowns,fn){
             window.clearInterval(timingID) 
             fn && fn.call()
         }
-    },0)
+    },20)
 }

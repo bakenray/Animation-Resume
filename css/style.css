@@ -2,6 +2,7 @@
     margin:0;
     padding:0;
     box-sizing: border-box;
+    transition: all .5s;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 *::-webkit-scrollbar {
@@ -17,4 +18,5 @@ ul,ol{
     width:40%;
     margin:auto;
     background:#ccc;
+    overflow:auto;
 }
