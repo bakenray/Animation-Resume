@@ -1,6 +1,5 @@
 var cssCode = 
-`
-/*
+`/*
 * Hello，你好~ 我是XXX
 * 我将以动画的形式来介绍我自己
 * 只用文字介绍太单调了
@@ -64,8 +63,8 @@ var cssCode2 =
     border:1px solid #ccc;
     border-radius:4px;
     box-shadow: 0 10px 15px rgba(0,0,0,.15);
-    font-size:20px;
-    padding:16px;
+    font-size:16px;
+    padding:20px;
 }
 #content{
     width:100%;
@@ -73,26 +72,22 @@ var cssCode2 =
     overflow: auto;
 }
 `
-var cssCode3 =
-`
-/*设置样式*/
-#tempId{    
-    width:100%;
-    height:100%; 
-    overflow: auto;
-}
-`
+
 var md =
 `
  # 自我介绍
 
  我叫XXX
+
  1993年3月
 
  XXX学校毕业
+
  自学前端两年
+
  希望应聘前端开发岗位
 
+ 
  # 技能介绍
  - HTML 
  - CSS 
@@ -102,6 +97,7 @@ var md =
  - Node.js
 
 
+
  # 项目介绍
 
  1. XXX
@@ -109,12 +105,46 @@ var md =
  3. XXX
  4. XXX
 
+
  # 联系方式
 
  电话：xxxx
+
  Q Q：xxxx
+
  邮箱：xxxx
 `
+var cssCode3 =
+`
+/*设置样式*/
+#tempId{    
+    width:100%;
+    height:100%; 
+    overflow: auto;
+    font-size: 16px;
+    padding:20px;
+}
+/*设置标题文字样式*/
+#tempId h1{
+    font-size: 30px;
+    color: #3d514f;
+    border-left: 5px solid #3d514f;
+    line-height: 1em;
+    text-indent: 6px;
+}
+/*设置文字内容样式*/
+#tempId p{
+    color: #5b6968;
+    text-indent:.8em;
+}
+#tempId ul li,
+#tempId ol li
+{
+    text-indent:.8em;
+}
+
+`
+
 
 writeCode('', cssCode, ()=>{
     createPaper(()=>{
