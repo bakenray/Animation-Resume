@@ -8,20 +8,27 @@ var cssCode =
 */
 
 /* body 添加一个背景色 */
+
 body{
     background: #87d1cd;
 }
+
 /* pre标签 添加样式 */
+
 #preId{
     background: rgba(255,255,255,.4);
     padding:20px;
     font-size:20px; 
 }
+
 /* 所有标签添加一个过渡效果 */
+
 *{
     box-sizing: border-box;
 }
+
 /* 然后设置一些代码的高亮，便于阅读 */
+
 .token.selector{
     color: #690;
 }
@@ -32,47 +39,83 @@ body{
     color: #DD4A68;
 }
 
-/*加点3D效果*/
+/*加点动画效果*/
+
 #preId{
-    transform:rotate(360deg);
-    transform: scale(.8, .8);  
+    animation: breath 1s infinite alternate-reverse;
+}
+
+@keyframes breath{
+    0%{
+        box-shadow:
+        2px 2px 5px rgba(0,0,0,.05), 
+        2px -2px 5px rgba(0,0,0,.05), 
+        -2px 2px 5px rgba(0,0,0,.05), 
+        -2px -2px 5px rgba(0,0,0,.05);
+    }
+    50%{
+        box-shadow:
+        8px 8px 20px rgba(0,0,0,.06), 
+        8px -8px 20px rgba(0,0,0,.06), 
+        -8px 8px 20px rgba(0,0,0,.06), 
+        -8px -8px 20px rgba(0,0,0,.06);
+    } 
+    100%{
+        box-shadow:
+        2px 2px 5px rgba(0,0,0,.05), 
+        2px -2px 5px rgba(0,0,0,.05), 
+        -2px 2px 5px rgba(0,0,0,.05), 
+        -2px -2px 5px rgba(0,0,0,.05);
+    } 
 }
 `
 var cssCode2 = 
-`/*下面正式介绍一下我自己吧*/
+`
+/*设置代码区样式*/
+
 #preId{
     position:fixed;
     left:2%;
     top:4%;
-    bottom:4%;
+    margin:0;
+    max-height:92%;
     width:44%;
-    height:92%;
     border:1px solid #e1e1e1;
     border-radius:4px;
-    box-shadow: 0 10px 15px rgba(0,0,0,.15);
 }
+
+/*加点3D效果*/
+
+#preId{
+    transform: scale(.8, .8); 
+}
+
+/*下面正式介绍一下我自己吧*/
+
 /*首先创建一张白纸*/
+
 #paperId{
+    height:92%;
     position:fixed;
     right:7%;
     width:44%;
     top:4%;
-    bottom:4%;
-    height:92%;
     background: rgba(255,255,255,.96);
     border:1px solid #ccc;
     border-radius:4px;
-    box-shadow: 0 10px 15px rgba(0,0,0,.15);
     font-size:16px;
     padding:20px;
     overflow: auto;
 }
+
 #content{
     width:100%;
     height:100%; 
     overflow: auto;
 }
+
 /*向白纸中填入内容*/
+
 `
 
 var md =
@@ -81,15 +124,13 @@ var md =
 
  我叫XXX
 
- 1993年3月
+ 1993年3月出生
 
- XXX学校毕业
+ XXXX本科毕业
 
  自学前端两年
-
+ 
  希望应聘前端开发岗位
-
-
 
  # 技能介绍
  - HTML 
@@ -99,8 +140,6 @@ var md =
  - Vue.js
  - Node.js
 
-
-
  # 项目介绍
 
  1. XXX
@@ -108,14 +147,14 @@ var md =
  3. XXX
  4. XXX
 
-
  # 联系方式
 
- 电话：xxxx
+ 电话：176771319xx
 
- Q Q：xxxx
+ Q Q：4798353xx
 
- 邮箱：xxxx
+ 邮箱：lpqstroxx@163.com
+
 `
 var cssCode3 =
 `
@@ -152,7 +191,6 @@ var cssCode3 =
 }
 
 `
-
 writeCode('', cssCode, ()=>{
     createPaper(()=>{
         writeCode(cssCode,cssCode2,()=>{

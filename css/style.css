@@ -16,7 +16,8 @@ ul,ol{
 }
 #preId{
     width:40%;
-    margin:auto;
+    max-height:80vh;
+    margin:10vh auto;
     background:#ccc;
     overflow:auto;
 }
